@@ -1,0 +1,4 @@
+-May have to move everything to a new Group 1 database that we have to create in snowflake
+and set that as the destination in FiveTran
+
+-Update: got the destination set up and it is there on snowflake, now having a hard time getting the actual tablees we create to go there

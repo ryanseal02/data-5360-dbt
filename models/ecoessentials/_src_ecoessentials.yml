@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: transactional_landing
+    database: GROUP1PROJECT
+    schema: ecoessentials_transactional_source_transactional_db
+    tables:
+      - name: customer
+      - name: order
+      - name: order_line
+      - name: product
+      - name: promotional_campaign
+  - name: salesforce_landing
+    database: GROUP1PROJECT
+    schema: ecoessentials_salesforce_source
+    tables:
+      - name: marketing_emails
