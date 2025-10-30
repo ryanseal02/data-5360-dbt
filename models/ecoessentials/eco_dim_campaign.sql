@@ -11,7 +11,7 @@ WITH promotional AS (
         CAMPAIGN_NAME,
         CAMPAIGN_DISCOUNT,
         NULL AS PROMOTIONAL_CAMPAIGN
-    FROM GROUP1PROJECT.ECOESSENTIALS_TRANSACTIONAL_SOURCE_TRANSACTIONAL_DB.PROMOTIONAL_CAMPAIGN
+    FROM {{ source('transactional_landing', 'promotional_campaign') }}
 ),
 
 orderline AS (
@@ -19,7 +19,7 @@ orderline AS (
         NULL AS CAMPAIGN_NAME,
         NULL AS CAMPAIGN_DISCOUNT,
         PROMOTIONAL_CAMPAIGN
-    FROM GROUP1PROJECT.ECOESSENTIALS_TRANSACTIONAL_SOURCE_TRANSACTIONAL_DB."ORDER_LINE"
+    FROM {{ source('transactional_landing', 'order_line') }}
 )
 
 SELECT * FROM promotional

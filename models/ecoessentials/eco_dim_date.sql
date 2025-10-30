@@ -11,7 +11,7 @@ WITH marketing AS (
         EVENTTIMESTAMP,
         SENDTIMESTAMP,
         NULL AS ORDER_TIMESTAMP
-    FROM GROUP1PROJECT.ECOESSENTIALS_SALESFORCE_SOURCE.marketing_emails
+    FROM {{ source('salesforce_landing', 'marketing_emails') }}
 ),
 
 orders AS (
@@ -19,7 +19,7 @@ orders AS (
         NULL AS EVENTTIMESTAMP,
         NULL AS SENDTIMESTAMP,
         ORDER_TIMESTAMP
-    FROM GROUP1PROJECT.ECOESSENTIALS_TRANSACTIONAL_SOURCE_TRANSACTIONAL_DB."ORDER"
+    FROM {{ source('transactional_landing', 'orders') }}
 )
 
 SELECT * FROM marketing
