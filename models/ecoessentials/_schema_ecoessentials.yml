@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: eco_dim_customer
+    description: "Ecoessentials Customer Dimension"
+  - name: eco_dim_date
+    description: "Ecoessentials Date Dimension"
+  - name: eco_dim_campaign
+    description: "Ecoessentials Campaign Dimension"
+  - name: eco_dim_email
+    description: "Ecoessentials Email Dimension"
+  - name: eco_dim_product
+    description: "Ecoessentials Product Dimension"
+  - name: eco_fact_sales
+    description: "Ecoessentials Sales Fact"
+  - name: eco_fact_email_event
+    description: "Ecoessentials Email Event Fact"
