@@ -8,7 +8,7 @@ select
     d.date_key,
     c.certification_name,
     c.certification_cost
-from {{ ref('stg_customer_service_interactions1') }} c
+from {{ ref('stg_employee_training') }} c
 inner join {{ ref('oliver_dim_employee') }} e
     on e.employee_id = c.employee_id
 inner join {{ ref('oliver_dim_date') }} d
