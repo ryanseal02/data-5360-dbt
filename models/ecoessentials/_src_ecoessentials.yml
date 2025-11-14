@@ -6,7 +6,7 @@ sources:
     schema: ecoessentials_transactional_source_transactional_db
     tables:
       - name: customer
-      - name: order
+      - name: orders
       - name: order_line
       - name: product
       - name: promotional_campaign

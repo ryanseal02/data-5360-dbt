@@ -9,5 +9,7 @@
 select
 emailid as email_key,
 emailid,
-emailname
-FROM {{ source('salesforce_landing', 'marketing_emails') }}
+emailname,
+d.date_key as send_date_key
+FROM {{ source('salesforce_landing', 'marketing_emails') }} me
+INNER JOIN {{ ref('eco_dim_date') }} d ON d.date_key = me.sendtimestamp
