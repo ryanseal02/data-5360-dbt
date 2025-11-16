@@ -1,5 +1,11 @@
+{{ config(
+    materialized = 'table',
+    database = 'GROUP1PROJECT',
+    schema = target.schema
+) }}
+
 with cte_date as (
-{{ dbt_date.get_date_dimension("1990-01-01", "2050-12-31") }}
+    {{ dbt_date.get_date_dimension("1990-01-01", "2050-12-31") }}
 )
 
 SELECT

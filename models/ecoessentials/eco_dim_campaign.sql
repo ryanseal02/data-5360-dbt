@@ -7,6 +7,7 @@
 WITH promotional AS (
     SELECT
         CAMPAIGN_ID AS campaign_key,
+        NULL AS campaign_id,
         CAMPAIGN_NAME,
         CAMPAIGN_DISCOUNT,
         NULL AS PROMOTIONAL_CAMPAIGN
@@ -16,6 +17,7 @@ WITH promotional AS (
 orderline AS (
     SELECT
         CAMPAIGN_ID AS campaign_key,
+        campaign_id,
         NULL AS CAMPAIGN_NAME,
         NULL AS CAMPAIGN_DISCOUNT,
         PROMOTIONAL_CAMPAIGN
