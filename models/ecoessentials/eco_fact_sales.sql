@@ -1,7 +1,7 @@
 {{ config(
     materialized = 'table',
     database = 'GROUP1PROJECT',
-    schema = target.schema
+    schema = 'dw_ecoessentials'
 ) }}
 
 SELECT
