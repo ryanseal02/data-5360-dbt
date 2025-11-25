@@ -5,13 +5,43 @@ models:
     description: "Ecoessentials Customer Dimension"
   - name: eco_dim_date
     description: "Ecoessentials Date Dimension"
+    columns:
+      - name: date_key
+        tests:
+          - unique
   - name: eco_dim_campaign
     description: "Ecoessentials Campaign Dimension"
   - name: eco_dim_email
     description: "Ecoessentials Email Dimension"
+    columns:
+      - name: email_key
+        tests:
+          - unique
   - name: eco_dim_product
     description: "Ecoessentials Product Dimension"
+    columns:
+      - name: product_type
+        tests:
+          - accepted_values:
+              values:
+                - "accessory"
+                - "cutting_board"
+                - "pan"
+                - "pot"
+                - "storage"
+                - "utensil"
   - name: eco_fact_sales
     description: "Ecoessentials Sales Fact"
+    columns:
+      - name: product_key
+        description: "Foreign key to the product dimension"
+        tests:
+          - not_null
   - name: eco_fact_email_event
     description: "Ecoessentials Email Event Fact"
+    columns:
+      - name: email_key
+        tests: 
+          - relationships:
+              field: emailid
+              to: ref('eco_dim_email')

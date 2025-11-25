@@ -1,30 +1,17 @@
 {{ config(
     materialized = 'table',
     database = 'GROUP1PROJECT',
-    schema = 'dw_ecoessentials'
-    )
-}}
+    schema = target.schema
+) }}
 
-
-WITH marketing AS (
-    SELECT
-        EVENTTIMESTAMP,
-        SENDTIMESTAMP,
-        NULL AS ORDER_TIMESTAMP
-    FROM GROUP1PROJECT.ECOESSENTIALS_SALESFORCE_SOURCE.marketing_emails
-),
-
-orders AS (
-    SELECT
-        NULL AS EVENTTIMESTAMP,
-        NULL AS SENDTIMESTAMP,
-        ORDER_TIMESTAMP
-    FROM GROUP1PROJECT.ECOESSENTIALS_TRANSACTIONAL_SOURCE_TRANSACTIONAL_DB."ORDER"
+with cte_date as (
+    {{ dbt_date.get_date_dimension("1990-01-01", "2050-12-31") }}
 )
 
-SELECT * FROM marketing
-UNION ALL
-SELECT * FROM orders
-
---How can we create a date key/do we need one?
---Also not sure if this is connected to the rest of the data warehouse, because there is no source linked on the lineage graph below.
+SELECT
+    date_day as date_key,
+    day_of_week,
+    month_of_year as month,
+    quarter_of_year as quarter,
+    year_number as year
+FROM cte_date
