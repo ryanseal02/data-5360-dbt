@@ -13,10 +13,6 @@ models:
     description: "Ecoessentials Campaign Dimension"
   - name: eco_dim_email
     description: "Ecoessentials Email Dimension"
-    columns:
-      - name: email_key
-        tests:
-          - unique
   - name: eco_dim_product
     description: "Ecoessentials Product Dimension"
     columns:
