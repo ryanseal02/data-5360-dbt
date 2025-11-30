@@ -6,10 +6,12 @@
 }}
 
 
-select
-emailid as email_key,
-emailid,
-emailname,
-d.date_key as send_date_key
-FROM {{ source('salesforce_landing', 'marketing_emails') }} me
-INNER JOIN {{ ref('eco_dim_date') }} d ON d.date_key = me.sendtimestamp
+SELECT
+    emailid AS email_key,
+    emailid,
+    emailname,
+    d.date_key AS send_date_key
+FROM GROUP1PROJECT.ecoessentials_salesforce_source.marketing_emails me
+INNER JOIN GROUP1PROJECT.dbt_rseal.eco_dim_date d 
+    ON d.date_key = TO_DATE(NULLIF(TO_VARCHAR(me.sendtimestamp), 'NULL'))
+
